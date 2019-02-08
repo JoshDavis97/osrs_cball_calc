@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>osrs_cball_calc</title>
+	<link rel="stylesheet" href="css/cball_calc.css"  type="text/css">
+    <link rel="icon" type="image/png" href="media/favicon.ico">
+	<script src="js/CannonBallCalculator.js"></script>
+</head>
+
+
+<body>
+<div id="div_title"><h1>Cannonball Calculator</h1></div>
+    <div id="div_content_container">
+        <div id="div_calculator">
+            <form id="form_calculator" action="javascript:cball_calc.run()">
+                <label for="price_steelbars" >Price you bought steel bars at:</label>
+                <input name="price_steelbars" id="price_steelbars"><br>
+
+                <label for="price_cannonballs">Price of cannonballs:</label>
+                <input name="price_cannonballs" id="price_cannonballs"><br>
+
+                <label for="amount_steelbars">How many steel bars do you have?</label>
+                <input name="amount_steelbars" id="amount_steelbars" type="text" placeholder="Enter a value..."><br>
+
+                <label for="time_to_bank">How long will it take you to bank?</label>
+                <input name="time_to_bank" id="time_to_bank" type="text" placeholder="Enter a value..." value="10"><br>
+
+				<input type="submit" value="Calculate">
+            </form>
+        </div>
+        <div id="div_results">
+            <span id="potential_cannonballs"></span><br>
+            <span id="spent_steel"></span><br>
+            <span id="value_cannonballs"></span><br>
+            <span id="cannonballs_hour"></span><br>
+            <span id="time_to_finish"></span><br>
+            <span id="gp_per_hour"></span><br>
+            <span id="xp_per_hour"></span><br>
+        </div>
+    </div>
+    <script>
+        cball_calc = new CannonballCalculator();
+    </script>
+</body>
+</html>
