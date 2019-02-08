@@ -72,7 +72,7 @@ class CannonballCalculator {
     populate_results(calc_result) {
         document.getElementById('spent_steel').innerHTML = this.format_number(calc_result.value_steelbars) + ' gp spent on steel bars.';
         document.getElementById('value_cannonballs').innerHTML = 'When made to cannonballs, worth will be ' + this.format_number(calc_result.value_cballs) + ' gp.';
-        document.getElementById('value_cannonballs').innerHTML = 'Total profit will be ' + this.format_number(calc_result.value_cballs - calc_result.value_steelbars) + ' gp.';
+        document.getElementById('total_profit').innerHTML = 'Total profit will be ' + this.format_number(calc_result.value_cballs - calc_result.value_steelbars) + ' gp.';
         document.getElementById('cannonballs_hour').innerHTML = this.format_number(calc_result.cballs_per_hour) + ' cannonballs per hour.';
         document.getElementById('gp_per_hour').innerHTML = this.format_number(calc_result.gp_per_hour) + ' gp per hour';
         document.getElementById('xp_per_hour').innerHTML = this.format_number(calc_result.xp_per_hour) + ' xp per hour';
