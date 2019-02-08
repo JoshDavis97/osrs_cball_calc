@@ -31,24 +31,30 @@ class CannonballCalculator {
     }
 
     calculate() {
-        console.log(this.time_to_bank);
-        console.log(this.time_per_inv);
         let trips_per_hour = 3600 / this.time_per_inv;
-        console.log(trips_per_hour);
         let bars_per_hour = trips_per_hour * 27;
-
-        let cballs_per_hour = bars_per_hour * 4;
-        let gp_per_hour = this.profit_per_bar * bars_per_hour;
-        let xp_per_hour = bars_per_hour * 25.5;
+        let cballs_per_hour = bars_per_hour * 4,
+            gp_per_hour = this.profit_per_bar * bars_per_hour,
+            xp_per_hour = bars_per_hour * 25.5,
+            value_cballs = this.amount_steelbars * 4 * this.price_cannonballs,
+            value_steelbars = this.amount_steelbars * this.price_steelbars,
+            time_to_finish = (this.amount_steelbars / 27) *  this.time_per_inv;
 
         return {    trips_per_hour : trips_per_hour,
                     bars_per_hour : bars_per_hour,
                     cballs_per_hour : cballs_per_hour,
                     gp_per_hour : gp_per_hour,
-                    xp_per_hour : xp_per_hour
+                    xp_per_hour : xp_per_hour,
+                    value_cballs : value_cballs,
+                    value_steelbars : value_steelbars,
+                    time_to_finish : time_to_finish
         };
     }
 
+    /**Takes a number and makes it more readable. Numbers above 10000 use K, numbers above 1000000 use M.
+     * @param number - the number to format
+     * @returns {*|string} - the formatted number
+     */
     format_number(number) {
         let formattedNumber = '';
         if(number > 9999) {
@@ -64,11 +70,23 @@ class CannonballCalculator {
     }
 
     populate_results(calc_result) {
-        document.getElementById('spent_steel').innerHTML = this.format_number(this.price_steelbars * this.amount_steelbars) + ' gp spent on steel bars.';
-        document.getElementById('value_cannonballs').innerHTML = 'When made to cannonballs, worth will be ' + this.format_number(this.amount_steelbars * 4 * this.price_cannonballs) + ' gp.';
+        document.getElementById('spent_steel').innerHTML = this.format_number(calc_result.value_steelbars) + ' gp spent on steel bars.';
+        document.getElementById('value_cannonballs').innerHTML = 'When made to cannonballs, worth will be ' + this.format_number(calc_result.value_cballs) + ' gp.';
+        document.getElementById('value_cannonballs').innerHTML = 'Total profit will be ' + this.format_number(calc_result.value_cballs - calc_result.value_steelbars) + ' gp.';
         document.getElementById('cannonballs_hour').innerHTML = this.format_number(calc_result.cballs_per_hour) + ' cannonballs per hour.';
         document.getElementById('gp_per_hour').innerHTML = this.format_number(calc_result.gp_per_hour) + ' gp per hour';
         document.getElementById('xp_per_hour').innerHTML = this.format_number(calc_result.xp_per_hour) + ' xp per hour';
+
+        let time_to_finish_str = '';
+        if(calc_result.time_to_finish > 7200) {
+            time_to_finish_str = (calc_result.time_to_finish / 3600).toFixed(2) + ' hours';
+        }
+        else if(calc_result.time_to_finish > 60) {
+            time_to_finish_str = (calc_result.time_to_finish / 60).toFixed(0) + ' minutes';
+        }
+
+        document.getElementById('time_to_finish').innerHTML = 'It will take ' + time_to_finish_str + ' to finish smelting all ' + this.amount_steelbars + ' steel bars into cannonballs.';
+
     }
 
 }
