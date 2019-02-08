@@ -7,10 +7,6 @@ class CannonballCalculator {
         this.amount_steelbars = 0;
         this.time_to_bank = 0;
         this.time_per_inv = 162;
-        this.time_to_finish = 0;
-        this.gp_hour = 0;
-        this.xp_hour = 0;
-        this.cballs_hour = 0;
     }
 
     run() {
@@ -25,8 +21,6 @@ class CannonballCalculator {
         this.profit_per_bar = (this.price_cannonballs*4) - this.price_steelbars;
         this.amount_steelbars = document.getElementById('amount_steelbars').value;
         this.time_to_bank = document.getElementById('time_to_bank').value;
-        console.log(this.time_per_inv);
-        console.log(this.time_per_inv + this.time_to_bank);
         this.time_per_inv = +this.time_per_inv + +this.time_to_bank;
     }
 
