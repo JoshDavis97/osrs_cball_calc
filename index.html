@@ -15,17 +15,17 @@
     <div id="div_content_container">
         <div id="div_calculator">
             <form id="form_calculator" action="javascript:cball_calc.run()">
-                <label for="price_steelbars" >Price you bought steel bars at:</label>
-                <input name="price_steelbars" id="price_steelbars"><br>
+                <label for="price_steelbars" >Price (gp) you bought steel bars at:</label>
+                <input name="price_steelbars" id="price_steelbars" type="number"><br>
 
-                <label for="price_cannonballs">Price of cannonballs:</label>
-                <input name="price_cannonballs" id="price_cannonballs"><br>
+                <label for="price_cannonballs">Price (gp) of cannonballs:</label>
+                <input name="price_cannonballs" id="price_cannonballs" type="number"><br>
 
                 <label for="amount_steelbars">How many steel bars do you have?</label>
-                <input name="amount_steelbars" id="amount_steelbars" type="text" placeholder="Enter a value..."><br>
+                <input name="amount_steelbars" id="amount_steelbars" type="number" placeholder="Enter a value..." ><br>
 
-                <label for="time_to_bank">How long will it take you to bank?</label>
-                <input name="time_to_bank" id="time_to_bank" type="text" placeholder="Enter a value..." value="10"><br>
+                <label for="time_to_bank">How long (seconds) will it take you to bank?</label>
+                <input name="time_to_bank" id="time_to_bank" type="number" placeholder="Enter a value..." value="10"><br>
 
 				<input type="submit" value="Calculate">
             </form>

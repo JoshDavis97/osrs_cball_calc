@@ -69,6 +69,17 @@ class CannonballCalculator {
         return formattedNumber;
     }
 
+    format_seconds(seconds) {
+        let formatted_time = '';
+        if(seconds > 7200) {
+            formatted_time = (seconds / 3600).toFixed(2) + ' hours';
+        }
+        else if(seconds > 60) {
+            formatted_time = (seconds / 60).toFixed(0) + ' minutes';
+        }
+        return formatted_time;
+    }
+
     populate_results(calc_result) {
         document.getElementById('spent_steel').innerHTML = this.format_number(calc_result.value_steelbars) + ' gp spent on steel bars.';
         document.getElementById('value_cannonballs').innerHTML = 'When made to cannonballs, worth will be ' + this.format_number(calc_result.value_cballs) + ' gp.';
@@ -76,17 +87,6 @@ class CannonballCalculator {
         document.getElementById('cannonballs_hour').innerHTML = this.format_number(calc_result.cballs_per_hour) + ' cannonballs per hour.';
         document.getElementById('gp_per_hour').innerHTML = this.format_number(calc_result.gp_per_hour) + ' gp per hour';
         document.getElementById('xp_per_hour').innerHTML = this.format_number(calc_result.xp_per_hour) + ' xp per hour';
-
-        let time_to_finish_str = '';
-        if(calc_result.time_to_finish > 7200) {
-            time_to_finish_str = (calc_result.time_to_finish / 3600).toFixed(2) + ' hours';
-        }
-        else if(calc_result.time_to_finish > 60) {
-            time_to_finish_str = (calc_result.time_to_finish / 60).toFixed(0) + ' minutes';
-        }
-
-        document.getElementById('time_to_finish').innerHTML = 'It will take ' + time_to_finish_str + ' to finish smelting all ' + this.amount_steelbars + ' steel bars into cannonballs.';
-
+        document.getElementById('time_to_finish').innerHTML = 'It will take ' + this.format_seconds(calc_result.time_to_finish) + ' to finish smelting all ' + this.amount_steelbars + ' steel bars into cannonballs.';
     }
-
 }
